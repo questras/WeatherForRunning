@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>{{ weather.city }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'weather/weatherStyle.css' %}">
+
+    <script>
+
+        function changeColors() {
+            let tempValue = document.getElementById("rightTemp").innerHTML;
+            let windValue = document.getElementById("rightWind").innerHTML;
+            tempValue = tempValue.substring(0, tempValue.length - 2);
+            windValue = windValue.substring(0, windValue.length - 5);
+
+            let htmlElement = "text-align: right;";
+            let tempColor, windColor, stateColor;
+
+
+            if (tempValue < -10) {
+                tempColor = "color: red;";
+                stateColor = "color: red;";
+            } else if (tempValue <= -5) {
+                tempColor = "color: #CC6600;";
+                stateColor = "color: #CC6600;";
+            } else if (tempValue <= 10) {
+                tempColor = "color: #FFCC00;";
+                stateColor = "color: #FFCC00;";
+            } else {
+                tempColor = "color: green;";
+                stateColor = "color: green;";
+            }
+
+            if (windValue > 25) {
+                windColor = "color: red;";
+                stateColor = "color: red;";
+            } else if (windValue > 10) {
+                windColor = "color: #FFCC00;";
+                stateColor = "color: #FFCC00;";
+            } else {
+                windColor = "color: green;";
+            }
+
+            let tempStyle = htmlElement + tempColor;
+            let windStyle = htmlElement + windColor;
+
+            document.getElementById("rightTemp").style = tempStyle;
+            document.getElementById("rightWind").style = windStyle;
+            document.getElementById("stateText").style = stateColor;
+
+        }
+
+        window.onload = changeColors;
+
+
+    </script>
+</head>
+<body>
+
+<div id="city">
+    <h1> {{ city }} </h1>
+</div>
+<div id="container">
+
+
+    <div id="details">
+        <div class="detailBox">
+            <div id="leftTemp" style="float: left;">Temperature:</div>
+            <div id="rightTemp" style="text-align: right; color: white;">{{ temperature }}C.</div>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="detailBox">
+            <div id="leftWind" style="float: left;">Wind speed:</div>
+            <div id="rightWind" style="text-align: right;color: white;">{{ wind_speed }}km/h.</div>
+            <div style="clear: both;"></div>
+        </div>
+
+        <div id="stateBox">
+            <div id="stateText">{{ running_state }}</div>
+        </div>
+
+
+    </div>
+
+    <a href="{% url 'index' %}">
+        <input type="submit" value="Back" id="backButton">
+    </a>
+</div>
+
+
+</body>
+</html>

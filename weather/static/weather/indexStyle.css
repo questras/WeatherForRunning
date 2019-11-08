@@ -1,0 +1,113 @@
+body {
+    background-color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+#container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#logo {
+    font-size: 80px;
+    color: #0C4B33;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 120px;
+}
+
+.error {
+    display: block;
+    text-align: center;
+    color: red;
+    letter-spacing: 2px;
+    height: 10px;
+    font-size: 16px;
+    margin-top: 0px;
+}
+
+#searchBox {
+    font-size: 40px;
+    color: #0C4B33;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#cityContainer {
+    margin-top: 180px;
+    text-align: center;
+}
+
+#city {
+    margin-bottom: 15px;
+    font-size: 37px;
+    text-align: center;
+    outline-color: #0C4B33;
+    color: #0C4B33;
+}
+
+#city:focus {
+    outline-color: #0C4B33;
+    color: #20AA76;
+}
+
+#searchButton {
+    margin-top: 20px;
+    font-size: 38px;
+    background-color: white;
+    color: #0C4B33;
+	border: 2px solid #0C4B33;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.cityButton {
+	background-color: white;
+	color: #0C4B33;
+    float: left;
+    font-size: 30px;
+    padding-top: 7px;
+    width: 200px;
+    height: 54px;
+    border: 2px solid #0C4B33;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+
+#searchButton:hover {
+    background-color: #93D7B7;
+}
+
+
+.cityHold {
+    text-align: center;
+    /*display: inline-block;*/
+    margin-bottom: 20px;
+}
+
+.cityButton:hover {
+    background-color: #e6ffe6;
+}
+
+.deleteButton {
+    float: left;
+    height: 54px;
+    width: 54px;
+    margin-left: 10px;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: white;
+    border-radius: 10px;
+}
+
+.deleteButton:hover {
+    background-color: #ff4d4d;
+}
+
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+    color: #4dff88;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+
+    <link rel="stylesheet" href="{% static 'weather/indexStyle.css' %}"/>
+    <link rel="stylesheet" href="{% static 'weather/fontello/css/fontello.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+
+</head>
+<body>
+
+<div id="container">
+    <!--container for logo-->
+    <div id="logo">
+        Weather Forecast
+    </div>
+
+    <!--container for search box-->
+    <div id="searchBox">
+        <form action="{% url 'search' %}" method="post">
+            {% csrf_token %}
+            City:
+            <input type="text" name="city" id="city">
+
+            <!--error messages-->
+            <div class="error">
+                {% if messages %}
+                    {% for msg in messages %}
+                        {{msg}}
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <!--submit search button-->
+            <input type="submit" value="Search" id="searchButton"/>
+        </form>
+        <span class="error">
+
+		</span>
+    </div>
+
+
+    <div id="cityContainer">
+
+        <div class="cityHold">
+            {% for obj in weather_objects %}
+                <!--city button-->
+                <form action="{% url 'search' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="city" value="{{ obj.city }}">
+                    <button type="submit" value="{{ obj.city }}" class="cityButton">{{ obj.city }}</button>
+                </form>
+
+                <!--delete icon-->
+                <form action="{% url 'delete' %}" method="post">
+                    {% csrf_token %}
+                    <button name="delete_button" class="deleteButton" value="{{ forloop.counter }}"><i
+                            class="icon-trash-empty"></i></button>
+                    <div style="clear: both;"></div>
+                </form>
+                &nbsp;
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+</div>
+
+
+</body>
+</html>
